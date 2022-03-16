@@ -5,7 +5,7 @@ class CreateOderDetails < ActiveRecord::Migration[6.1]
       t.integer :item_id, null:false
       t.integer :price, null:false
       t.integer :amount, null:false
-      t.integer :making_status, null:false
+      t.integer :making_status, null:false, default: ""
       t.timestamps
     end
   end
