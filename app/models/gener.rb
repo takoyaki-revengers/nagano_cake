@@ -1,2 +1,0 @@
-class Gener < ApplicationRecord
-end
