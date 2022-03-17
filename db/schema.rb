@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_16_081521) do
+ActiveRecord::Schema.define(version: 2022_03_17_040122) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id", null: false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2022_03_16_081521) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "geners", force: :cascade do |t|
+  create_table "genres", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2022_03_16_081521) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "oder_details", force: :cascade do |t|
+  create_table "order_details", force: :cascade do |t|
     t.integer "order_id", null: false
     t.integer "item_id", null: false
     t.integer "price", null: false
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2022_03_16_081521) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "oders", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "post_code", null: false
     t.string "address", null: false
