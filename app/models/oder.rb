@@ -1,5 +1,5 @@
 class Oder < ApplicationRecord
   belongs_to :customer
-  has_many :oder_details
+  has_many :order_details
 
 end
