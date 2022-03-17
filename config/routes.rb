@@ -1,20 +1,26 @@
 Rails.application.routes.draw do
   namespace :public do
-    get 'address/index'
-    get 'address/edit'
+    get 'homes/show'
+    get 'homes/top'
+    get 'homes/about'
   end
   namespace :public do
     get 'customers/show'
     get 'customers/edit'
+    get 'customers/unsubscribe'
+  end
+  namespace :public do
+    get 'cart_items/index'
+  end
+  namespace :public do
+    get 'address/index'
+    get 'address/edit'
   end
   namespace :public do
     get 'oders/new'
     get 'oders/thanks'
     get 'oders/index'
     get 'oders/show'
-  end
-  namespace :public do
-    get 'car_items/index'
   end
   namespace :public do
     get 'items/index'
