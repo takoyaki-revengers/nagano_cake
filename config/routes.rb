@@ -37,7 +37,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
 namespace :admin do
-    get '/' => 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:new, :index, :create, :show, :edit, :update]
     resources :orders, only: [:show, :update]
@@ -46,24 +45,18 @@ namespace :admin do
   end
 
 
-    
-    get 'about' => 'homes#about', as: 'about'
+# ここから↓↓
 
+  scope module: "public" do
+    root to: 'homes#top'
+    get 'about' => 'homes#about', as: 'about'
+    get  "/customers/sign_out" => "public/sessions#destroy"
 
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:update]
-
-
-
     resources :cart_items, only: [:index,:update,:destroy,:create]
-
-
-    resources :orders, only: [:index,:show,:new,:create]
-
-    resources :shipping_addresses, only: [:index,:create,:destroy,:edit,:update]
-    resources :genres, only: [:show]
-
-
+  end
+# ここまで↑↑ 会員
 
 
 end
