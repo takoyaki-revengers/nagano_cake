@@ -37,7 +37,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
 namespace :admin do
-    get '/' => 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:new, :index, :create, :show, :edit, :update]
     resources :orders, only: [:show, :update]
@@ -45,6 +44,8 @@ namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end
 
+
+# ここから↓↓
 
   scope module: "public" do
     root to: 'homes#top'
@@ -59,4 +60,7 @@ namespace :admin do
     resources :genres, only: [:show]
 
   end
+# ここまで↑↑ 会員
+
+
 end
