@@ -46,7 +46,7 @@ namespace :admin do
   end
 
 
-    root to: 'homes#top'
+    
     get 'about' => 'homes#about', as: 'about'
 
 

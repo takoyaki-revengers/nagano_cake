@@ -3,6 +3,6 @@ class Item < ApplicationRecord
 
   has_many :order_details
   belongs_to :genre
-  has_many :cart_items, dependemt: :destroy
+  has_many :cart_items, dependent: :destroy
 
 end
