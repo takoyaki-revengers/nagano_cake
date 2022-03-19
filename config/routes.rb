@@ -45,7 +45,6 @@ namespace :admin do
   end
 
 
-
 # ここから↓↓
 
   scope module: "public" do
