@@ -1,3 +1,9 @@
-<div class="col-md-3">
-  <h2>ジャンル検索</h2>
+<div class="col-md-3 sm-3">
+  <table class="table">
+    <th>ジャンル検索</th>
+    <% genres.each do |genre| %>
+      <td><%= link_to genre.name, genre_path(genre.id) %></td>
+    <% end %>
+  </table>
+
 </div>
