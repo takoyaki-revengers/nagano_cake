@@ -22,8 +22,13 @@
       </div>
       <div class="form-group">
         <%= f.label :ジャンル %>
-        <%= f.select :genre_id,Genre.all %>
+        <%= f.select :genre_id,Genre.all, placeholder: "--選択してください--" %>
       </div>
+      <div class="form-group">
+        <%= f.label :税抜価格 %>
+        <%= f.select :genre_id,Genre.all, placeholder: "--選択してください--" %>
+      </div>
+      
 
       <% end %>
     </div>
