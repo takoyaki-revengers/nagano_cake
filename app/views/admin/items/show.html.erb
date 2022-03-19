@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>商品詳細</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag @item.image,size:"200x200" %>
+    </div>
+    <div class="col-md-2">
+      <table>
+      <th>商品名</th>
+      <th>商品説明</th>
+      <th>ジャンル</th>
+      <th>税込価格<br>
+      (税抜価格)
+      </th>
+      <th>販売ステータス</th>
+    </div>
+
+
+    <div class="col-md-5">
+      <% @item.each do |item| %>
+      <td><%= item.name %></td>
+      <td><%= item.introduction %></td>
+      <td><%= item.genres.name %></td>
+      <td><%= item.add_tax_price.to_s(:dalimited) %>
+      (<%= item.praice %>)円
+      </td>
+      <td><%= item.is_active %></td>
+      </table>
+    </div>
+    
+    <div class="row">
+    <%= link_to "編集する",edit_admin_item_path, class:"btn btn-success" %>
+    </div>
+  </div>
