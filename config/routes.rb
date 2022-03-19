@@ -55,6 +55,10 @@ namespace :admin do
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:update]
     resources :cart_items, only: [:index,:update,:destroy,:create]
+    resources :orders, only: [:index,:show,:new,:create]
+    resources :addresses, only: [:index,:create,:destroy,:edit,:update]
+    resources :genres, only: [:show]
+
   end
 # ここまで↑↑ 会員
 
