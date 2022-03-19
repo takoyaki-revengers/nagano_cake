@@ -29,7 +29,7 @@
         <% @genres.each do |genre| %>
          <tr>
            <td><%= genre.name %></td>
-           <td><%= link_to "編集する", edit_admin_gennre_path(genre), class: "btn btn-success offset-6" %></td>
+           <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success offset-6" %></td>
          </tr>
         <% end %>
       </tbody>

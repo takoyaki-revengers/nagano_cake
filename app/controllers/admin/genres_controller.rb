@@ -7,7 +7,7 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     @genre.save
-    redirect_to reques.referer
+    redirect_to request.referer
   end
 
   def edit
@@ -23,7 +23,7 @@ class Admin::GenresController < ApplicationController
 
   private
   def genre_params
-    params.require(:genre).permit(name)
+    params.require(:genre).permit(:name)
   end
 
 end
