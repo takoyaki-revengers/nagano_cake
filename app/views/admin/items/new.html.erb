@@ -22,14 +22,16 @@
       </div>
       <div class="form-group">
         <%= f.label :ジャンル %>
-        <%= f.select :genre_id,Genre.all, placeholder: "--選択してください--" %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: '--選択してください--'} %>
       </div>
       <div class="form-group">
         <%= f.label :税抜価格 %>
-        <%= f.select :genre_id,Genre.all, placeholder: "--選択してください--" %>
+        <%= f.text_field :praice, placeholder: "1000" %>円
       </div>
-      
 
+      <div class="form-group">
+        <%= f.submit "新規登録",class:"btn btn-success" %>
+      </div>
       <% end %>
     </div>
   </div>
