@@ -1,2 +1,25 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<<div class="container">
+  <div class="row">
+    <%= render "public/items/genre_search" %>
+
+    <div class="col-md-8 offset-md-1">
+       <div class="item-box">
+         <%= image_tag items(@item).get_image(100,100) %>
+         <%= item(@item).name %>
+         <%= item(@item).introduction %>
+
+        <div class="price">
+          ¥ <%= item(@item).price %>*1.1 (税込)
+        </div>
+
+        <div class="row">
+          <!--個数選択↓-->
+          <%= f.select :amount, *[1..20] %>
+
+        </div>
+
+
+       </div>
+    </div>
+  </div>
+</div>
