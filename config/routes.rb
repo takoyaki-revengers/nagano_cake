@@ -46,24 +46,17 @@ namespace :admin do
   end
 
 
+  scope module: "public" do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
-
+    get  "/customers/sign_out" => "public/sessions#destroy"
 
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:update]
-
-
-
     resources :cart_items, only: [:index,:update,:destroy,:create]
-
-
     resources :orders, only: [:index,:show,:new,:create]
-
-    resources :shipping_addresses, only: [:index,:create,:destroy,:edit,:update]
+    resources :addresses, only: [:index,:create,:destroy,:edit,:update]
     resources :genres, only: [:show]
 
-
-
-
+  end
 end
