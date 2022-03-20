@@ -4,8 +4,8 @@
   </div>
   <%= form_with model: @address, local: true do |f| %>
     <div class="row mt-4 form-group">
-      <%= f.label :post_code, "郵便番号(ハイフンなし)", class: "col-md-3"　%>
-      <%= f.title_field :post_code, class: "offset-md-1" %>
+      <%= f.label :post_code, "郵便番号(ハイフンなし)", class: "col-md-3" %>
+      <%= f.text_field :post_code, class: "offset-md-1" %>
     </div>
 
     <div class="row form-group">
@@ -15,7 +15,7 @@
 
     <div class="row mb-5 form-group">
       <%= f.label :name, "宛名", class: "col-md-3" %>
-      <%= f.title_field :name, class: "offset-md-1" %>
+      <%= f.text_field :name, class: "offset-md-1" %>
     </div>
 
       <%= f.submit "変更内容を保存", class: "btn btn-success offset-md-2 col-2" %>
