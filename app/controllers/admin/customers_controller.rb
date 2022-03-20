@@ -20,6 +20,6 @@ class Admin::CustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:customer).oermit(:familiy_name, :first_name, :familiy_name_kana, :first_name_kana, :post_code, :address, :email, :withdraw )
+    params.require(:customer).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :post_code, :address, :email, :withdraw )
   end
 end
