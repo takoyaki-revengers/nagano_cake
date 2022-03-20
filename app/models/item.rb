@@ -7,12 +7,16 @@ class Item < ApplicationRecord
 
   #emumの定義
   enum is_active: { on_sale: 0, stop: 1 }
- 
+
 
  #税込価格
  def  add_tax_price
   (self.price * 1.10).round
  end
+
+def get_image(width, height)
+  image.variant(resize_to_limit: [width, height]).processed
+end
 
 
 
