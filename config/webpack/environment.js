@@ -9,4 +9,8 @@ environment.plugins.prepend(
     Popper: 'popper.js'
   })
 )
+
+
 module.exports = environment
+
+
