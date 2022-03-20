@@ -54,7 +54,7 @@ namespace :admin do
 
     get "/customers/my_page" => "customers#show" #会員情報詳細ページ（マイページ）表示
     get "/customers/unsubscribe" => "customers#unsubscribe" #退会確認画面の表示
-    patch "/customers/withdraw" => "customers#withdraw" #退会フラグを切り替える
+    get "/customers/withdraw" => "customers#withdraw" #退会フラグを切り替える
 
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:update]

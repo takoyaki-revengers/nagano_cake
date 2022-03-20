@@ -13,7 +13,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
       #flash[:notice] = "会員情報を更新しました。"
-      redirect_to customer_path
+      redirect_to customers_my_page_path(@customer)
     else
       render :edit
     end
@@ -25,7 +25,7 @@ class Public::CustomersController < ApplicationController
 
   def withdraw #退会フラグを切り替える
     @customer = current_customer
-    @user.update(is_deleted: true) #is_deletedカラムの退会フラグを退会（true）に更新する
+    @customer.update(is_deletd: true) #is_deletedカラムの退会フラグを退会（true）に更新する
     reset_session #ログアウトさせる
     #flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
