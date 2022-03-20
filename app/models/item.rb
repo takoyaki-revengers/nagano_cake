@@ -5,8 +5,9 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
 
-  #emum
-  enum sales_status: { on_sale: 0, stopping_sales: 1 }
+  #emumの定義
+  enum is_active: { on_sale: 0, stop: 1 }
+ 
 
  #税込価格
  def  add_tax_price
