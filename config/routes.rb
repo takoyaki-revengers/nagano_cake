@@ -52,10 +52,13 @@ namespace :admin do
     get 'about' => 'homes#about', as: 'about'
     get  "/customers/sign_out" => "public/sessions#destroy"
 
+
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:update]
     resources :cart_items, only: [:index,:update,:destroy,:create]
-    resources :orders, only: [:index,:show,:new,:create]
+    resources :orders, only: [:index,:show,:new,:create,]
+    post "/oders/confirm" => "oders#confirm" #注文情報確認画面を表示する
+    get "/oders/thanks" => "oders#thanks" #注文完了画面を表示する
     resources :addresses, only: [:index,:create,:destroy,:edit,:update]
     resources :genres, only: [:show]
 
