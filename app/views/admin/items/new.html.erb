@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3 offset-md-2">
-      <h2 class="bg-light">商品新規登録</h2>
+      <h4 class="bg-light my-5 text-center">商品新規登録</h4>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-10 offset-md-1">
+  <div class="row  mx-auto">
+    <div class="col-md-8 offset-md-4">
       <%= form_with model: @item,url: admin_items_path,local:true do |f| %>
       <div class="form-group">
         <%= f.label :商品画像 %>
