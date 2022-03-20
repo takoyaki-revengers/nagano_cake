@@ -1,25 +1,22 @@
 <<div class="container">
   <div class="row">
-    <%= render "public/items/genre_search" %>
+    <%= render "public/items/genre_search", genres: @genres %>
 
-    <div class="col-md-8 offset-md-1">
-       <div class="item-box">
-         <%= image_tag items(@item).get_image(100,100) %>
-         <%= item(@item).name %>
-         <%= item(@item).introduction %>
+    <div class="col-md-3 ">
+        <%= image_tag @item.get_image(200,200) %>
+    </div>
+    <div class="col-md-6">
+     <h5><strong><%= @item.name %></strong></h5><br>
+      <%= @item.introduction %><br>
+        ¥ <%= @item.price %>*1.1 (税込)
 
-        <div class="price">
-          ¥ <%= item(@item).price %>*1.1 (税込)
-        </div>
-
-        <div class="row">
-          <!--個数選択↓-->
-          <%= f.select :amount, *[1..20] %>
-
-        </div>
+        <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+        <!--個数選択↓-->
+        <%= f.select :amount, *[1..20] %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      <% end %>
 
 
-       </div>
     </div>
   </div>
 </div>

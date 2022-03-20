@@ -11,13 +11,15 @@
           <th>小計</th>
           <th></th>
         </tr>
+      <%= @cart_items.each do |cart_item| %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><% cart_item_item.name %></td>
+          <td><% cart_item.price %></td>
+          <td><% cart_item.amount %></td>
           <td></td>
           <td>削除する</td>
         </tr>
+      <% end %>
       </table>
 
       <table class="table table-bordered">
