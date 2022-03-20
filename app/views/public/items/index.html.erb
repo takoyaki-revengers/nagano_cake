@@ -6,7 +6,8 @@
       <h1>商品一覧</h1>
       <% @items.each do |item| %>
        <div class="item">
-         <%= image_tag item.get_image(80,80) %><br>
+         <%= image_tag item.image,size: "80,80" %>
+         <%#= image_tag item.get_image(80,80) %><br>
          <%= item.name %><br>
          ¥<%= item.price %>-
        </div>
