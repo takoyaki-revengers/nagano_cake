@@ -57,7 +57,7 @@ class Public::OrdersController < ApplicationController
         @orded_item.amount = cart_item.amount
         @orded_item.save
       end
-      #@cart_items.destroy_all
+      @cart_items.destroy_all
       redirect_to orders_thanks_path
     else
       @order = Order.new(order_params)

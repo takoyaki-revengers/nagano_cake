@@ -6,7 +6,14 @@
           stop: "販売停止中"      #Enumの名前定義
 
 
-      order:                      # モデル名（Orderモデルに対して）
-        payment_method:           # カラム名（payment_methodカラムに対して）
+      order:
+        payment_method:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+
+        status:
+          waiting: "入金待ち"
+          confirm: "入金確認"
+          making: "製作中"
+          ready: "発送準備中"
+          complete: "発送済み"
