@@ -46,8 +46,17 @@
 .box{
   height: 300px;
   width: 500px;
-  // background-size: cover;
-  // z-index: -1;
-  // position: absolute;
-  // position: relative;
+  z-index: -1;
+  position: absolute;
+}
+
+.box-text{
+  height: 300px;
+  width: 500px;
+  position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
 }
