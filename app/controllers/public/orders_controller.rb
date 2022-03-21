@@ -7,8 +7,28 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm #注文情報確認画面を表示する
-    @order = current_customer.Order.all
-
+    @cart_items = current_customer.cart_items.all
+    @postage = 800
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @total_price = @total + @postage
+    if params[:order][:address] == "0" #自分の住所に送る場合
+      @order = Order.new
+      @order.post_code = current_customer.post_code
+      @order.address = current_customer.address
+      @order.name = current_customer.family_name + current_customer.first_name
+    elsif params[:order][:address] == "1"
+      @order = Order.new
+      @address = Address.find(params[:order][:address_id])
+      @order.post_code = @address.post_code
+      @order.address = @address.address
+      @order.name = @address.name
+    elsif params[:order][:address] == "2"
+      @order = Order.new(order_params)
+    else
+      #flash[:notice] = "配送先を選択してください"
+      @order = Order.new(order_params)
+      render :new
+    end
   end
 
   def create #注文情報を確定する
@@ -27,6 +47,6 @@ class Public::OrdersController < ApplicationController
 
   private
     def order_params
-      prams.require(:order).permit(:customer_id, :post_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+        params.require(:order).permit(:payment_method, :postal_code, :address, :name)
     end
 end

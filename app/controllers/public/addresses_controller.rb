@@ -38,9 +38,6 @@ class Public::AddressesController < ApplicationController
     redirect_to request.referer
   end
 
-  def full_address　#注文情報入力画面のお届け先表示用
-    '〒' + postal_code + ' ' + address + ' ' + name
-  end
 
   private
 

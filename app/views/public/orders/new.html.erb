@@ -15,44 +15,55 @@
     </div>
 
     <h5>お届け先</h5>
-    <div class="form-group row">
 
-        <div class="col-sm-4 ml-3">
+      <div class="form-group row">
+        <div class="col-md-6 ml-5">
           <%= f.radio_button :address, "0" %>
           <%= f.label :address, "ご自身の住所" %>
-        </div>
-        <div class="col-sm-4 ml-5">
           <p>〒<%= @customer.post_code %><br>
              <%= @customer.address %><br>
              <%= @customer.family_name %> <%= @customer.first_name %>
           </p>
         </div>
+      </div>
 
-        <div class="col-sm-4 ml-3">
+      <div class="form-group row">
+        <div class="col-md-6 ml-5">
           <%= f.radio_button :address, "1" %>
           <%= f.label :address, "登録済住所から選択" %>
+        </div>
+        <div class="col-md-6 ml-5">
           <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
         </div>
+      </div>
 
-        <div class="col-sm-4 ml-3">
+      <div class="form-group row">
+        <div class="col-md-6 ml-5">
           <%= f.radio_button :address, "2" %>
           <%= f.label :address, "新しいお届け先" %>
         </div>
-        <div class="col-sm-4 ml-5">
-          <%= f.label :post_code, "郵便番号(ハイフンなし)", class: "col-md-3" %>
-          <%= f.text_field :post_code, class: "offset-md-1" %>
+      </div>
+        <div class="form-group row">
+          <div class="col-md-6 ml-5">
+            <%= f.label :post_code, "郵便番号（ハイフンなし）" %>
+            <%= f.text_field :post_code %>
+          </div>
         </div>
-        <div class="row form-group">
-          <%= f.label :address, "住所", class: "col-md-3" %>
-          <%= f.text_area :address, class: "offset-md-1 col-4" %>
+        <div class="form-group row">
+          <div class="col-md-10 ml-8">
+            <%= f.label :address, "住所" %>
+            <%= f.text_area :address %>
+          </div>
         </div>
-        <div class="row mb-5 form-group">
-          <%= f.label :name, "宛名", class: "col-md-3" %>
-          <%= f.text_field :name, class: "offset-md-1" %>
+        <div class="form-group row">
+          <div class="col-md-6 ml-5">
+            <%= f.label :name, "宛名" %>
+            <%= f.text_field :name %>
+          </div>
         </div>
-    </div>
-    <div class="field col-sm-12 text-center mt-2">
-      <%= f.submit "確認画面へ進む",class: "btn btn-primary" %>
-    </div>
+      <div class="field col-sm-12 text-center mt-2">
+        <%= f.submit "確認画面へ進む",class: "btn btn-primary" %>
+      </div>
+
     <% end %>
 </div>
