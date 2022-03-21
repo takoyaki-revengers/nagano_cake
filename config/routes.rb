@@ -61,8 +61,8 @@ namespace :admin do
     resources :customers, only: [:edit,:update]
     resources :cart_items, only: [:index,:update,:destroy,:create]
     resources :orders, only: [:index,:show,:new,:create,]
-    post "/oders/confirm" => "oders#confirm" #注文情報確認画面を表示する
-    get "/oders/thanks" => "oders#thanks" #注文完了画面を表示する
+    post "/orders/confirm" => "orders#confirm" #注文情報確認画面を表示する
+    get "/orders/thanks" => "orders#thanks" #注文完了画面を表示する
     resources :addresses, only: [:index,:create,:destroy,:edit,:update]
     resources :genres, only: [:show]
 
