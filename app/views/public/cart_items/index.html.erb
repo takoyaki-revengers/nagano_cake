@@ -15,13 +15,14 @@
       <% @cart_items.each do |cart_item| %>
         <tr>
           <td><%= link_to cart_item.item.name, item_path(cart_item.item_id) %></td>
-          <td><%= cart_item.item.price %>x1.1</td>
-          <td><%= form_with model: cart_item, url:cart_item_path(cart_item.item), method: :patch do |f| %>
-                <%= f.select :amount, *[1..20], selected: cart_item.amount %>
-                <%= f.submit "変更", class: "btn btn-success" %>
-              <% end %>
-                <%#= cart_item.amount %></td>
-          <td></td>
+          <td>¥<%= cart_item.item.add_tax_price %>-</td>
+          <td>
+            <%= form_with model: cart_item, url:cart_item_path(cart_item.item), method: :patch do |f| %>
+              <%= f.select :amount, *[1..20], selected: cart_item.amount %>
+              <%= f.submit "変更", class: "btn btn-success" %>
+            <% end %>
+          </td>
+          <td>¥ <%= cart_item.subtotal %>-</td>
           <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
         </tr>
       <% end %>
@@ -38,7 +39,7 @@
           <table class="table table-bordered">
             <tr>
               <th class="table-active">合計金額</th>
-              <th></th>
+              <th>¥ -</th>
             </tr>
           </table>
         </div>
