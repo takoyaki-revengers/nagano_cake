@@ -1,6 +1,6 @@
-  ja:         
+  ja:
     enums:                        #enum型に対する日本語定義であることを明示するために記述
       item:                       #モデル名を指定
-        is_active:                #カラム名を指定
+       is_active:                #カラム名を指定
           on_sale: "販売中"       #Enumの名前定義
           stop: "販売停止中"      #Enumの名前定義
