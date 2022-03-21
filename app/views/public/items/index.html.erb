@@ -2,21 +2,22 @@
   <div class="row">
     <%= render "public/items/genre_search", genres: @genres %>
 
-    <div class="col-md-8 sm-8 offset-md-1">
+    <div class="col-md-9 sm-9">
       <h1>商品一覧</h1>
       <div class="row">
            <% @items.each do |item| %>
            <div class="col-md-3">
             <%= link_to item_path(item.id) do %>
-                <%= image_tag item.get_image(120,80) %><br>
+                <%= image_tag item.get_image(140,120) %><br>
             <% end %>
              <%= item.name %><br>
              ¥<%= item.price %>-
            </div>
           <% end %>
       </div>
-
-     <%= paginate @items %>
+      <div class="row">
+        <%= paginate @items %>
+      </div>
 
     </div>
   </div>

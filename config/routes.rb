@@ -1,27 +1,5 @@
 Rails.application.routes.draw do
 
-
-  # devise_for :admins
-  # devise_for :customers
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
-
-
-
-#   # 顧客用
-# # URL /customers/sign_in ...
-# devise_for :customers, controllers: {
-#   registrations: "public/registrations",
-#   sessions: 'public/sessions'
-# }
-
-# # 管理者用
-# # URL /admin/sign_in ...
-# devise_for :admin, controllers: {
-#   sessions: "admin/sessions"
-# }
-
-
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -45,7 +23,7 @@ namespace :admin do
   end
 
 
-# ここから↓↓
+# ここから↓↓ 会員
 
   scope module: "public" do
     root to: 'homes#top'
@@ -58,7 +36,12 @@ namespace :admin do
 
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:update]
-    resources :cart_items, only: [:index,:update,:destroy,:create]
+    resources :cart_items, only: [:index,:update,:destroy,:create] do
+      collection do #:idをつけないように!!
+        delete :destroy_all #カートを空にする
+      end
+    end
+
     resources :orders, only: [:index,:show,:new,:create]
     resources :addresses, only: [:index,:create,:destroy,:edit,:update]
     resources :genres, only: [:show]
