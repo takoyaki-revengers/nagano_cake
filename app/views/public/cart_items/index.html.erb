@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-md-10 sm-12">
       <h2>ショッピングカート</h2>
-
       <table class="table table-bordered">
         <tr class="table-active">
           <th class="text-left">商品名</th>
@@ -11,11 +10,12 @@
           <th>小計</th>
           <th></th>
         </tr>
-      <%= @cart_items.each do |cart_item| %>
+
+      <% @cart_items.each do |cart_item| %>
         <tr>
-          <td><% cart_item_item.name %></td>
-          <td><% cart_item.price %></td>
-          <td><% cart_item.amount %></td>
+          <td><%= cart_item.item.name %></td>
+          <td><%# cart_item.price %></td>
+          <td><%= cart_item.amount %></td>
           <td></td>
           <td>削除する</td>
         </tr>

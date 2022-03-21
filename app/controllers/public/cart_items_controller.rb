@@ -4,11 +4,11 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new
+    @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
     # if
       @cart_item.save
-      redirect_to items_path
+      redirect_to cart_items_path
     # else
       # render current_customer_cart_items_path
     # end
@@ -23,6 +23,6 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-      params.require(:cart_item).permit(:item_id, :amount)
+      params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 end
