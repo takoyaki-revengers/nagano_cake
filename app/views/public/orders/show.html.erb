@@ -61,7 +61,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @order_items.each do |f| %>
+          <% @order.each do |f| %>
             <tr>
               <td><%= f.item.name %></td>
                 <td>¥<%= (f.item.price*1.1).to_s(:delimited) %></td>

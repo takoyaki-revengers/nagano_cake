@@ -44,9 +44,8 @@ class Public::OrdersController < ApplicationController
     @customer = Customer.find(current_customer.id)
 
     if @order.save
-      #flash[:notice] = "注文を受け付けました"
-
-      @cart_items.destroy_all
+      flash[:notice] = "注文を受け付けました"
+      #@cart_items.destroy_all
       redirect_to orders_thanks_path
     else
       @order = Order.new(order_params)
@@ -64,12 +63,12 @@ class Public::OrdersController < ApplicationController
 
     @cart_items = current_customer.cart_items #会員の注文詳細を登録する
     @cart_items.each do |cart_item|
-      @orded_item = Order_Detail.new
-      @orded_item.item_id = cart_item.item_id
-      @orded_item.order_id = @order.id
-      @orded_item.total_payment = cart_item.item.total_payment
-      @orded_item.amount = cart_item.amount
-      @orded_item.save
+      @order_detail = OrderDetail.new
+      @order_detail.item_id = cart_item.item_id
+      @order_detail.order_id = @order.id
+      @order_detail.total_payment = @total_price
+      @order_detail.amount = cart_item.amount
+      @order_detail.save
     end
   end
 
@@ -81,7 +80,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show #注文履歴詳細画面の表示
-    @order = current_customer.orders.find(params[:id])
+    @order = Order.find(params[:id])
+    @orderd_items = @order.order_detail
   end
 
   private
