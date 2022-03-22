@@ -45,8 +45,9 @@ class Public::OrdersController < ApplicationController
 
     if @order.save
       flash[:notice] = "注文を受け付けました"
-      #@cart_items.destroy_all
+      @cart_items.destroy_all
       redirect_to orders_thanks_path
+
     else
       @order = Order.new(order_params)
       render :new
@@ -66,13 +67,15 @@ class Public::OrdersController < ApplicationController
       @order_detail = OrderDetail.new
       @order_detail.item_id = cart_item.item_id
       @order_detail.order_id = @order.id
-      @order_detail.total_payment = @total_price
+      @order_detail.price = cart_item.item.price
       @order_detail.amount = cart_item.amount
       @order_detail.save
     end
+
   end
 
   def thanks #注文完了画面を表示する
+
   end
 
   def index #注文履歴一覧画面の表示
