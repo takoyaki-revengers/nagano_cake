@@ -1,6 +1,19 @@
-  ja:
+
+  ja:                             #日本語の設定
     enums:                        #enum型に対する日本語定義であることを明示するために記述
       item:                       #モデル名を指定
        is_active:                #カラム名を指定
           on_sale: "販売中"       #Enumの名前定義
           stop: "販売停止中"      #Enumの名前定義
+
+      order:
+        payment_method:
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
+
+        status:
+          waiting: "入金待ち"
+          confirm: "入金確認"
+          making: "製作中"
+          ready: "発送準備中"
+          complete: "発送済み"
