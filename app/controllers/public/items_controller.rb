@@ -1,7 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    # @items = Item.all
-    @items = Item.page(params[:page])
+    @items = Item.where(is_active: "true" ).page(params[:page]).per(8) #ステータス判別、ページネーション
     @genres = Genre.all
   end
 
