@@ -14,7 +14,6 @@
 *= require_self
 */
 
-
 .image1 {
   background-image: image-url("skip01.jpg");
   height: 800px;
@@ -59,4 +58,15 @@
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
+}
+
+
+.logo {
+  font-size: 35px;
+  font-family: 'Tangerine', cursive;
+  color: #FFB6C1;
+}
+
+.nav-item {
+  color: #FFB6C1;
 }
