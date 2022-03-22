@@ -3,24 +3,23 @@ class Public::OrdersController < ApplicationController
 
   def new #注文情報入力画面を表示する(支払方法、配送先の選択)
     @order = Order.new
-    # @customer = Customer.find(current_customer.id)
   end
 
   def confirm #注文情報確認画面を表示する
     @cart_items = current_customer.cart_items.all #会員のカート内商品全て
-    @postage = 800 #送料
+    @shipping_cost = 800 #送料
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal } #合計金額（送料以外）
-    @total_price = @total + @postage #合計金額（送料込み）
+    @total_price = @total + @shipping_cost #合計金額（送料込み）
     @order = Order.new
     @order.customer_id = current_customer.id
 
     if params[:order][:address_option] == "0" #自分の住所の場合
-      @order = Order.new
+      @order = Order.new(order_params)
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
       @order.name = current_customer.family_name + current_customer.first_name
     elsif params[:order][:address_option] == "1" #登録済住所の場合
-      @order = Order.new
+      @order = Order.new(order_params)
       @address = Address.find(params[:order][:address_id])
       @order.post_code = @address.post_code
       @order.address = @address.address
@@ -37,10 +36,12 @@ class Public::OrdersController < ApplicationController
   def create #注文情報を確定する
 
     @cart_items = current_customer.cart_items.all #会員のカート内商品全て
-    @postage = 800 #送料
+    @shipping_cost = 800 #送料
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal } #合計金額（送料以外）
-    @total_price = @total + @postage #合計金額（送料込み)
+    @total_price = @total + @shipping_cost #合計金額（送料込み)
+    @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @customer = Customer.find(current_customer.id)
 
     if @order.save
       #flash[:notice] = "注文を受け付けました"
@@ -85,6 +86,6 @@ class Public::OrdersController < ApplicationController
 
   private
     def order_params
-        params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+        params.require(:order).permit(:customer_id, :total_payment, :payment_method, :post_code, :address, :name, :shipping_cost)
     end
 end

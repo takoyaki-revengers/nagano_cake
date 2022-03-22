@@ -34,8 +34,8 @@
           <tbody>
             <tr>
               <td>送料</td>
-              <td>¥<%= @postage %></td>
-              <%= f.hidden_field :postage, value: @postage %>
+              <td>¥<%= @shipping_cost %></td>
+              <%= f.hidden_field :shipping_cost, value: @shipping_cost %>
             </tr>
             <tr>
               <td>商品合計</td>
@@ -43,8 +43,8 @@
             </tr>
             <tr>
               <td>請求合計</td>
-              <td>¥<%= (@total + @postage).to_s(:delimited) %></td>
-              <%= f.hidden_field :total_payment, value: (@total + @postage) %>
+              <td>¥<%= (@total + @shipping_cost).to_s(:delimited) %></td>
+              <%= f.hidden_field :total_payment, value: (@total + @shipping_cost) %>
             </tr>
           </tbody>
         </table>
