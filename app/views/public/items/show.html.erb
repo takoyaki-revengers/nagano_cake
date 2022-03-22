@@ -1,11 +1,13 @@
 <div class="container">
-<p><%= notice %></p>
+ <p><%= notice %></p>
   <div class="row">
     <%= render "public/items/genre_search", genres: @genres %>
 
     <div class="col-md-3 sm-3">
-        <%= image_tag @item.get_image(200,200) %>
+        <%#= image_tag @item.get_image(200,200) %>
+        <%= image_tag @item.image, size: "200x170" %>
     </div>
+
     <div class="col-md-6 sm-6">
      <h5><strong><%= @item.name %></strong></h5><br>
       <%= @item.introduction %><br>
