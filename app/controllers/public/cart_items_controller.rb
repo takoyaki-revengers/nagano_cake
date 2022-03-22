@@ -9,29 +9,37 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    # if
+    if
       @cart_item.save
+      flash[:notice] = "カートに追加しました。"
       redirect_to cart_items_path
-    # else
-      # render current_customer_cart_items_path
-    # end
+    else
+      render cart_items_path
+      flash[:alert] = "カートに商品を追加できません"
+    end
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
-    @cart_item.update(cart_item_params)
-    redirect_to cart_items_path
+    if @cart_item.update(cart_item_params)
+      flash[:notice] = "カートを更新しました。"
+      redirect_to cart_items_path
+    else
+      render request.referer
+    end
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
+    flash[:alert] = "カートから一部商品を削除しました。"
     redirect_to request.referer
   end
 
   def destroy_all
     @cart_items = current_customer.cart_items
     @cart_items.destroy_all
+    flash[:alert] = "カートを空にしました。"
     redirect_to items_path
   end
 
