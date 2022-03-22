@@ -17,7 +17,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:new, :index, :create, :show, :edit, :update]
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:show, :update, :index]
     resources :order_details, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update]
   end
@@ -33,6 +33,8 @@ namespace :admin do
     get "/customers/my_page" => "customers#show" #会員情報詳細ページ（マイページ）表示
     get "/customers/unsubscribe" => "customers#unsubscribe" #退会確認画面の表示
     patch "/customers/withdraw" => "customers#withdraw" #退会フラグを切り替える
+    get "/orders/thanks" => "orders#thanks" #注文完了画面を表示する
+    post "/orders/confirm" => "orders#confirm" #注文情報確認画面を表示する
 
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:update]
@@ -42,7 +44,11 @@ namespace :admin do
       end
     end
 
-    resources :orders, only: [:index,:show,:new,:create]
+    resources :orders, only: [:index,:show,:new,:create,] do
+      collection do
+        get :thanks
+      end
+    end
     resources :addresses, only: [:index,:create,:destroy,:edit,:update]
     resources :genres, only: [:show]
 
