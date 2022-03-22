@@ -1,4 +1,10 @@
 class Admin::OrdersController < ApplicationController
+  def index
+    @orders = Order.page(params[:page])
+
+  end
+
+
 
   def show
     @order = Order.find(params[:id])
@@ -18,5 +24,6 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:status)
   end
+
 
 end
