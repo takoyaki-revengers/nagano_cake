@@ -9,13 +9,23 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
+
     if
       @cart_item.save
+      @cart_items = current_customer.cart_items.all #商品が同じ時まとめる
+      @cart_items.each do |cart_item|
+        if cart_item.item_id == @cart_item.item_id
+          new_amount = cart_item.amount + @cart_item.amount
+          cart_item.update_attribute(:amount, new_amount)
+          @cart_item.delete
+        end
+      end
+
       flash[:notice] = "カートに追加しました。"
       redirect_to cart_items_path
     else
-      render cart_items_path
       flash[:alert] = "カートに商品を追加できません"
+      redirect_to request.referer
     end
   end
 
