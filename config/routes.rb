@@ -34,6 +34,7 @@ namespace :admin do
     get "/customers/unsubscribe" => "customers#unsubscribe" #退会確認画面の表示
     patch "/customers/withdraw" => "customers#withdraw" #退会フラグを切り替える
 
+
     resources :items, only: [:index,:show]
     resources :customers, only: [:edit,:update]
     resources :cart_items, only: [:index,:update,:destroy,:create] do
@@ -42,7 +43,10 @@ namespace :admin do
       end
     end
 
-    resources :orders, only: [:index,:show,:new,:create]
+    resources :cart_items, only: [:index,:update,:destroy,:create]
+    resources :orders, only: [:index,:show,:new,:create,]
+    post "/orders/confirm" => "orders#confirm" #注文情報確認画面を表示する
+    get "/orders/thanks" => "orders#thanks" #注文完了画面を表示する
     resources :addresses, only: [:index,:create,:destroy,:edit,:update]
     resources :genres, only: [:show]
 
