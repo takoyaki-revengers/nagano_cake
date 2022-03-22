@@ -1,19 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-     <h2 class="bg-light">商品一覧</h2>
-
-      <%= link_to new_admin_item_path do %>
-      <button class="btn btn-warning btn-circle btn-circle-sm m-1">+</button>
+    <div class="col-md-10 offset-md-2 my-5">
+     <h4 class="bg-light text-center col-2 my-auto">商品一覧</h4>
+     <%= link_to new_admin_item_path, class: "col-10 offset-md-9 my-auto" do %>
+      <i class="fas fa-plus-circle"></i>
       <% end %>
-
-    </div>
+     </div>
   </div>
+
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-10 mx-auto">
       <table class="table">
         <thead>
-          <tr>
+          <tr  class="bg-light">
             <th>商品ID</th>
             <th>商品名</th>
             <th>税抜価格</th>
@@ -28,7 +27,12 @@
             <td><%= link_to item.name,admin_item_path(item) %></td>
             <td><%= item.price %></td>
             <td><%= item.genre.name %></td>
-            <td><%= item.is_active %></td>
+            <%if item.is_active == true %>
+            <td class="font-weight-bold text-success">販売中</td>
+            <% else %>
+            <td class="font-weight-bold text-secondary">販売停止中</td>
+            <% end %>
+
           </tr>
          <% end %>
         </tbody>

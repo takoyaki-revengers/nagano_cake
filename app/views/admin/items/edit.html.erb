@@ -1,15 +1,44 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <h2 class="bg-light">商品新規登録</h2>
+    <div class="col-md-3 offset-md-1">
+      <h4 class="bg-light my-5 text-center">商品登録編集</h4>
     </div>
   </div>
 
-  <div class="row">
-    <%= render "form",item: @item %>
+  <div class="row  mx-auto">
+    <div class="col-md-8 offset-md-2">
+      <%= form_with model: @item, url: admin_item_path(@item),local:true do |f| %>
+      <div class="form-group">
+        <%= f.label :商品画像,class: "col-3" %>
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :商品名,class: "col-3 " %>
+        <%= f.text_field :name, placeholder: "商品名",size: "31" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :商品説明,class: "align-top col-3" %>
+        <%= f.text_area :introduction, placeholder: "ここに説明文を記述します",size: "30x10" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :ジャンル,class: "col-3" %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: '--選択してください--'} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :税抜価格,class: "col-3" %>
+        <%= f.text_field :price, placeholder: "1000",size: "31" %>円
+      </div>
 
       <div class="form-group">
-        <%= f.submit "変更の保存",class: "btn btn-success" %>
+        <%= f.label :販売ステータス,class: "col-3" %>
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :販売ステータス, '販売中', value: true %>
+        <%= f.radio_button :is_active, false,class: "ml-3" %>
+        <%= f.label :販売ステータス, "販売停止中", value: false %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "変更の保存",class: "btn btn-success col-2 mx-auto d-block" %>
       </div>
 
   </div>

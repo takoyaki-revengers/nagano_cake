@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
 
   #emumの定義
-  enum is_active: { on_sale: 0, stop: 1 }
+ # enum is_active: { on_sale: 0, stop: 1 }
 
 
  #税込価格
