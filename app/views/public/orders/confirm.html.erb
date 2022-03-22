@@ -30,6 +30,7 @@
         <div class="col-sm-4">
         <table class="table table-bordered">
           <%= form_with model: @order, url:orders_path, method: :post, local: true do |f| %>
+            <%= f.hidden_field :customer_id, value: @customer %>
           <tbody>
             <tr>
               <td>送料</td>
