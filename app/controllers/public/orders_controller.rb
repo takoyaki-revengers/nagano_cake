@@ -62,16 +62,16 @@ class Public::OrdersController < ApplicationController
     end
 
     @cart_items = current_customer.cart_items #会員の注文詳細を登録する
-    @cart_items.each do |cart_item|
+    @cart_items.each do |cart_item| #購入したカート内商品全て
       @order_detail = OrderDetail.new
-      @order_detail.item_id = cart_item.item_id
+      @order_detail.item_id = cart_item.item_id #
       @order_detail.order_id = @order.id
       @order_detail.price = cart_item.item.price
       @order_detail.amount = cart_item.amount
-      logger.debug "************** @order_detail: #{@order_detail.attributes.inspect}"
+      #logger.debug "************** @order_detail: #{@order_detail.attributes.inspect}"
       @order_detail.save
-      @cart_items.destroy_all
     end
+      @cart_items.destroy_all
   end
 
   def thanks #注文完了画面を表示する
