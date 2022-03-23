@@ -33,20 +33,15 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-
-
-
-
   def create #注文情報を確定する
 
     @cart_items = current_customer.cart_items.all #会員のカート内商品全て
     @shipping_cost = 800 #送料
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal } #合計金額（送料以外）
-    @total_price = @total + @postage #合計金額（送料込み)
+    @total_price = @total + @shipping_cost #合計金額（送料込み)
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @customer = Customer.find(current_customer.id)
-
 
     if @order.save
       flash[:notice] = "注文を受け付けました"
@@ -92,6 +87,6 @@ class Public::OrdersController < ApplicationController
 
   private
     def order_params
-        params.require(:order).permit(:customer_id, :payment_method, :post_code, :address, :name, :shipping_cost)
+        params.require(:order).permit(:customer_id, :total_payment, :payment_method, :post_code, :address, :name, :shipping_cost)
     end
 end
