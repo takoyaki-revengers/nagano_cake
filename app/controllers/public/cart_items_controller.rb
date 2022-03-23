@@ -1,5 +1,7 @@
 class Public::CartItemsController < ApplicationController
   # before_action :autheniticate_customer
+  before_action :check_item_amount, only: [:create]
+
 
   def index
     @cart_items = CartItem.all
@@ -27,6 +29,15 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
+  def update
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      flash[:notice] = "カートを更新しました。"
+      redirect_to cart_items_path
+    else
+      render request.referer
+    end
+  end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
@@ -34,7 +45,6 @@ class Public::CartItemsController < ApplicationController
     flash[:alert] = "カートから一部商品を削除しました。"
     redirect_to request.referer
   end
-
 
   def destroy_all
     @cart_items = current_customer.cart_items
@@ -46,6 +56,13 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-      params.require(:cart_item).permit(:customer_id, :item_id, :amount)
+      params.require(:cart_item).permit(:item_id, :amount)
+  end
+
+  def check_item_amount
+    if params[:cart_item][:amount] == ""
+      flash[:alert] = "個数選択してください"
+      redirect_to request.referer
+    end
   end
 end
