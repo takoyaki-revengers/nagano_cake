@@ -16,7 +16,6 @@
 
           <tbody>
             <% @orders.each do |order| %>
-                <%# logger.debug "************** order: #{order.attributes.inspect}" %>
                 <tr>
                   <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
                   <td>
@@ -27,10 +26,11 @@
                   </td>
                   <td>
                     <% order.order_details.all.each do |order_detail| %>
-                      <p><%=order_detail.item.name %></p>
+                    <%# logger.debug "************** order: #{order.attributes.inspect}" %>
+                      <%= order_detail.item.name %>
                     <% end %>
                   </td>
-                  <td><%= order.total_payment.to_s(:delimited) %>円</td>
+                  <td><%= order.total_payment.to_i %>円</td>
                   <td><%= order.status %></td>
                   <td>
                   <%= link_to "表示する", order_path(order.id), class: 'btn btn-primary' %>

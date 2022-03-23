@@ -8,9 +8,9 @@
     <div class="form-group row">
       <div class="col-md-6 ml-5">
         <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-        <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
+        <%= f.label :クレジットカード, Order.payment_methods_i18n[:credit_card] %><br>
         <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-        <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+        <%= f.label :銀行振込, Order.payment_methods_i18n[:transfer] %>
       </div>
     </div>
 
