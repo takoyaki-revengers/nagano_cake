@@ -22,7 +22,7 @@
           <tr>
             <td><%= link_to order.created_at,admin_order_path(order) %></td>
             <td><%= order.name %></td>
-            <td><%= order.order_details.count %></td>
+            <td><%= order.order_details.amount %></td>
             <td><%= order.status %></td>
           </tr>
          <% end %>
