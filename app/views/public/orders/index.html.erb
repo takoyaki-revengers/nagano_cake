@@ -16,6 +16,7 @@
 
           <tbody>
             <% @orders.each do |order| %>
+                <%# logger.debug "************** order: #{order.attributes.inspect}" %>
                 <tr>
                   <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
                   <td>
@@ -25,9 +26,9 @@
                     </p>
                   </td>
                   <td>
-                    <% order.order_details.all.each do |f| %>
-                      <p><%= f.item.name %></p>
-                    <%end %>
+                    <% order.order_details.all.each do |order_detail| %>
+                      <p><%=order_detail.item.name %></p>
+                    <% end %>
                   </td>
                   <td><%= order.total_payment.to_s(:delimited) %>円</td>
                   <td><%= order.status %></td>
