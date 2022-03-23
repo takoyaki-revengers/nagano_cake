@@ -18,9 +18,9 @@
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td><%= cart_item.item.name %></td>
-                <td><%= (cart_item.item.price * 1.1).to_i%></td>
-                <td><%= cart_item.amount %></td>
-                <td>¥<%= (cart_item.item.price * cart_item.amount * 1.1).floor.to_s(:delimited) %></td>
+                <td><%= (cart_item.item.price * 1.1).to_i %>円</td>
+                <td><%= cart_item.amount %>個</td>
+                <td><%= (cart_item.item.price * cart_item.amount * 1.1).to_i %>円</td>
               </tr>
             <% end %>
           </tbody>
@@ -34,16 +34,16 @@
           <tbody>
             <tr>
               <td>送料</td>
-              <td>¥<%= @shipping_cost %></td>
+              <td><%= @shipping_cost %>円</td>
               <%= f.hidden_field :shipping_cost, value: @shipping_cost %>
             </tr>
             <tr>
               <td>商品合計</td>
-              <td>¥<%= @total.to_s(:delimited) %></td>
+              <td><%= @total.to_s(:delimited) %>円</td>
             </tr>
             <tr>
               <td>請求合計</td>
-              <td>¥<%= (@total + @shipping_cost).to_s(:delimited) %></td>
+              <td><%= (@total + @shipping_cost).to_s(:delimited) %>円</td>
               <%= f.hidden_field :total_payment, value: (@total + @shipping_cost) %>
             </tr>
           </tbody>
