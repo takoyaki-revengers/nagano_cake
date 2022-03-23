@@ -45,7 +45,6 @@ class Public::OrdersController < ApplicationController
 
     if @order.save
       flash[:notice] = "注文を受け付けました"
-      @cart_items.destroy_all
       redirect_to orders_thanks_path
 
     else
@@ -53,7 +52,7 @@ class Public::OrdersController < ApplicationController
       render :new
     end
 
-    if params[:order][:address] == "2" #新しいお届け先を選択した場合、その住所を登録する
+    if params[:order][:address_option] == "2" #新しいお届け先を選択した場合、その住所を登録する
         @address = Address.new
         @address.customer_id = current_customer.id
         @address.name = @order.name
@@ -63,19 +62,19 @@ class Public::OrdersController < ApplicationController
     end
 
     @cart_items = current_customer.cart_items #会員の注文詳細を登録する
-    @cart_items.each do |cart_item|
+    @cart_items.each do |cart_item| #購入したカート内商品全て
       @order_detail = OrderDetail.new
-      @order_detail.item_id = cart_item.item_id
+      @order_detail.item_id = cart_item.item_id #
       @order_detail.order_id = @order.id
       @order_detail.price = cart_item.item.price
       @order_detail.amount = cart_item.amount
+      #logger.debug "************** @order_detail: #{@order_detail.attributes.inspect}"
       @order_detail.save
     end
-
+      @cart_items.destroy_all
   end
 
   def thanks #注文完了画面を表示する
-
   end
 
   def index #注文履歴一覧画面の表示
@@ -84,7 +83,6 @@ class Public::OrdersController < ApplicationController
 
   def show #注文履歴詳細画面の表示
    @order=current_customer.orders.find(params[:id])
-   #logger.debug "************** @order: #{@order.attributes.inspect}"
   end
 
   private
