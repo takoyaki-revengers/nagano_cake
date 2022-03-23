@@ -88,8 +88,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show #注文履歴詳細画面の表示
-    @order = Order.find(params[:id])
-    @orderd_items = @order.order_detail
+   @order=current_customer.orders.find(params[:id])
+   #logger.debug "************** @order: #{@order.attributes.inspect}"
   end
 
   private
