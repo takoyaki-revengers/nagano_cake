@@ -84,7 +84,7 @@ class Public::OrdersController < ApplicationController
 
   def show #注文履歴詳細画面の表示
     @order = Order.find(params[:id])
-    @orderd_items = @order.order_detail
+    @order_items = @order.order_details
   end
 
   private
