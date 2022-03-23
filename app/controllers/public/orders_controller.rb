@@ -53,7 +53,7 @@ class Public::OrdersController < ApplicationController
       render :new
     end
 
-    if params[:order][:address] == "2" #新しいお届け先を選択した場合、その住所を登録する
+    if params[:order][:address_option] == "2" #新しいお届け先を選択した場合、その住所を登録する
         @address = Address.new
         @address.customer_id = current_customer.id
         @address.name = @order.name
@@ -71,11 +71,9 @@ class Public::OrdersController < ApplicationController
       @order_detail.amount = cart_item.amount
       @order_detail.save
     end
-
   end
 
   def thanks #注文完了画面を表示する
-
   end
 
   def index #注文履歴一覧画面の表示
