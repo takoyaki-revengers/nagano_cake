@@ -45,7 +45,6 @@ class Public::OrdersController < ApplicationController
 
     if @order.save
       flash[:notice] = "注文を受け付けました"
-      @cart_items.destroy_all
       redirect_to orders_thanks_path
 
     else
@@ -69,7 +68,9 @@ class Public::OrdersController < ApplicationController
       @order_detail.order_id = @order.id
       @order_detail.price = cart_item.item.price
       @order_detail.amount = cart_item.amount
+      logger.debug "************** @order_detail: #{@order_detail.attributes.inspect}"
       @order_detail.save
+      @cart_items.destroy_all
     end
   end
 
@@ -82,7 +83,6 @@ class Public::OrdersController < ApplicationController
 
   def show #注文履歴詳細画面の表示
    @order=current_customer.orders.find(params[:id])
-   #logger.debug "************** @order: #{@order.attributes.inspect}"
   end
 
   private

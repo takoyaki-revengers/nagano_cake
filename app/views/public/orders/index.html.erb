@@ -26,8 +26,8 @@
                   </td>
                   <td>
                     <% order.order_details.all.each do |order_detail| %>
-                    <% logger.debug "************** order: #{order.attributes.inspect}" %>
-                      <p><%=order_detail.item.name %></p>
+                    <%# logger.debug "************** order: #{order.attributes.inspect}" %>
+                      <p><%= order_detail.item.name %></p>
                     <% end %>
                   </td>
                   <td><%= order.total_payment.to_s(:delimited) %>円</td>
