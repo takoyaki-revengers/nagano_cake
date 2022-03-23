@@ -13,11 +13,15 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-    order = Order.find(params[:id])
-    order_details = order.order_details
-    order.update(order_params)
-    order_details.update_all(making_status: "製作待ち") if order.status == "入金確認"
-    redirect_to request.referer
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @order.update(order_params)
+   if @order.status == "入金確認"
+     @order_details.update_all(making_status: 1)
+    redirect_to admin_order_path(@order)
+   else
+     redirect_to request.referer
+   end
   end
 
   private

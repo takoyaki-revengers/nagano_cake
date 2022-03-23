@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-3">
+    <!--<div class="col-3">-->
       <h5 class="text-center mt-5">注文履歴の詳細</h5>
     </div>
      <div class="col-12 mt-3">
@@ -48,11 +48,11 @@
      </div>
   </div>
 
-  <div class="row mt-5">
+  <div class="row mt-4">
 
     <div class="col-8">
       <table class="table">
-        <thead>
+        <thead class="table-active">
           <tr class="bg-light">
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -68,21 +68,21 @@
             <td><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.subtotal.to_s(:delimited) %></td>
+           <%= form_with(model:[@order, order_detail], url: admin_order_detail_path(order_id: @order.id, id: order_detail.id), method: :patch, local: true) do |f| %>
             <td>
-              <%= form_with(model:[@order, order_detail], url: admin_order_detail_path(order_id: @order.id, id: order_detail.id), method: :patch, local: true) do |f| %>
-              <%= f.select :making_status, OrderDetail.making_statuses.keys %>
+              <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
               <%= f.submit "更新", class: "btn btn-success" %>
-              <% end %>
             </td>
+           <% end %>
           </tr>
-          <% @sum += order_detail.subtotal %>
-        <% end %>
+           <% @sum += order_detail.subtotal %>
+          <% end %>
         </tbody>
       </table>
     </div>
 
     <div class="col-4">
-      <table class="col-7">
+      <table class="col-7 mt-auto offset-1">
         <tr>
           <th class="pb-2">商品合計</th>
           <td><%= @sum.to_s(:delimited) %>円</td>
