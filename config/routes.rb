@@ -24,7 +24,6 @@ namespace :admin do
   end
 
 
-# ここから↓↓
 
   scope module: "public" do
     root to: 'homes#top'
