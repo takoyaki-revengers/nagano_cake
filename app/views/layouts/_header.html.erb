@@ -3,7 +3,7 @@
     <div class="container">
       <a class="navbar-brand" href="/"><span class="logo">NaganoCakes</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon bg-dark"></span>
+        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
@@ -43,7 +43,7 @@
            <%= link_to 'ジャンル一覧', admin_genres_path, class: 'nav-link text-light mr-2' %>
          </li>
          <li>
-           <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+           <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
          </li>
 
         <% else %>
