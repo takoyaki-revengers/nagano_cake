@@ -1,9 +1,26 @@
-<div class="col-md-3 sm-3">
-  <h3>ジャンル検索</h3>
+<!--<div class="col-md-3 sm-3">-->
+<!--  <h3>ジャンル検索</h3>-->
 
-  <% genres.each do |genre| %>
-    <div class="genre-item">
-      <%= link_to genre.name, genre_path(genre.id) %>
-    </div>
-  <% end %>
+<!--  <#% genres.each do |genre| %>-->
+<!--    <div class="genre-item">-->
+<!--      <%#= link_to genre.name, genre_path(genre.id) %>-->
+<!--    </div>-->
+<!--  <#% end %>-->
+<!--</div>-->
+
+
+<!--検索機能なし↓-->
+<div class="col-md-3 sm-3">
+  <table>
+    <tr>
+      <th class="bg-active">ジャンル一覧</th>
+    </tr>
+
+    <% genres.each do |genre| %>
+    <tr>
+      <td><%= genre.name %></td>
+    <% end %>
+    </tr>
+  </table>
+
 </div>
