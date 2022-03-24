@@ -28,11 +28,16 @@
               ログアウト
             <% end %>
           </li>
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </ul>
       </div>
     </div>
   </nav>
           
+  
           <!--管理者ログイン後のヘッダー-->
         <% elsif admin_signed_in? %>
           <nav class="navbar navbar-expand-lg navbar-dark header-color">
@@ -58,6 +63,10 @@
                  <li>
                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
                  </li>
+                  <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
                 </ul>
               </div>
             </div>
