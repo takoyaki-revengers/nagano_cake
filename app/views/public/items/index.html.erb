@@ -12,8 +12,8 @@
                 <%#= image_tag item.get_image(140,120) %><br>
                 <%= image_tag item.image, size:"160x120" %><br>
             <% end %>
-             <%= item.name %><br>
-             ¥<%= item.price %>-
+             <strong><%= item.name %></strong><br>
+             ¥<%= item.price.to_s(:delimited) %>-
            </div>
           <% end %>
       </div>
