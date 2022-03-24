@@ -77,4 +77,15 @@
 
 .text_color {
   color:#008080;
+
+.item-image{
+  width: 160px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.item-image-show{
+  width: 200px;
+  height: 170px;
+  object-fit: contain;
 }
