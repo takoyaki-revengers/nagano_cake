@@ -43,6 +43,7 @@ class Public::AddressesController < ApplicationController
     redirect_to request.referer
   end
 
+
   private
 
   def address_params
