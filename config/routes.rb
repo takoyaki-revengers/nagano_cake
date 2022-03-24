@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -23,7 +24,6 @@ namespace :admin do
   end
 
 
-# ここから↓↓ 会員
 
   scope module: "public" do
     root to: 'homes#top'

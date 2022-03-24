@@ -12,7 +12,6 @@
           <tr  class="bg-light">
             <th>購入日時</th>
             <th>購入者</th>
-            <th>税抜価格</th>
             <th>注文個数</th>
             <th>注文ステータス</th>
           </tr>
@@ -20,10 +19,10 @@
         <tbody>
          <% @orders.each do |order| %>
           <tr>
-            <td><%= link_to order.created_at,admin_order_path(order) %></td>
+            <td><%= link_to order.created_at.strftime("%Y-%m-%d %H:%M:%S") ,admin_order_path(order) %></td>
             <td><%= order.name %></td>
-            <td><%= order.order_details.amount %></td>
-            <td><%= order.status %></td>
+            <td><%= order.order_details.sum(:amount) %></td>
+            <td><%= order.status_i18n %></td>
           </tr>
          <% end %>
         </tbody>
@@ -32,3 +31,4 @@
     </div>
   </div>
 </div>
+

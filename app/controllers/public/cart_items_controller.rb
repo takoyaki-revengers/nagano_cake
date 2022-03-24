@@ -1,5 +1,7 @@
 class Public::CartItemsController < ApplicationController
   # before_action :autheniticate_customer
+  before_action :check_item_amount, only: [:create]
+
 
   def index
     @cart_items = CartItem.all
@@ -55,5 +57,12 @@ class Public::CartItemsController < ApplicationController
 
   def cart_item_params
       params.require(:cart_item).permit(:item_id, :amount)
+  end
+
+  def check_item_amount
+    if params[:cart_item][:amount] == ""
+      flash[:alert] = "個数選択してください"
+      redirect_to request.referer
+    end
   end
 end
