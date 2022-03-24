@@ -26,11 +26,18 @@
           <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
         </tr>
       <% end %>
+        <tr>
+          <td><div class="space">　</div></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
       </table>
 
       <div class="row">
         <div class="col-md-3 sm-3">
-          <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+          <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
         </div>
         <div class="offset-md-5 sm-5"></div>
 

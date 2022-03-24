@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-3 mb-5">
+    <div class="col-3 mb-5 offset-1">
       <h5 class="text-center bg-light mt-5"><%= @customer.family_name %> <%= @customer.first_name %>さんの会員詳細</h5>
     </div>
   </div>
 
     <div class="row">
-      <div class="col-8 mb-2">
+      <div class="col-8 mb-2 mx-auto">
         <table class="table">
           <tr>
             <th>会員ID</th>
@@ -37,6 +37,7 @@
             <th><%= @customer.email %></th>
           </tr>
           <tr>
+            <th>会員ステータス</th>
             <th>
               <%if @customer.is_deletd == false %>
                <p class="text-success">有効会員</p>

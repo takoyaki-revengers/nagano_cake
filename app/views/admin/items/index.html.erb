@@ -1,16 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-2 my-5">
-     <h4 class="bg-light text-center col-2 my-auto">商品一覧</h4>
+     <h5 class="bg-light text-center col-2 my-auto">商品一覧</h5>
      <%= link_to new_admin_item_path, class: "col-10 offset-md-9 my-auto" do %>
       <i class="fas fa-plus-circle"></i>
       <% end %>
      </div>
   </div>
-
-
-<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-
 
   <div class="row">
     <div class="col-md-10 mx-auto">
