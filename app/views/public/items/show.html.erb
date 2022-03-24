@@ -11,7 +11,7 @@
     <div class="col-md-6 col-sm-6">
      <h5><strong><%= @item.name %></strong></h5><br>
       <%= @item.introduction %><br>
-        ¥<%= @item.add_tax_price %>-(税込) <p>[¥<%= @item.price %>-]</p>
+        ¥<%= @item.add_tax_price.to_s(:delimited) %>-(税込) <p>[¥<%= @item.price %>-]</p>
 
       <%= form_with model: @cart_item, url: cart_items_path do |f| %>
         <%= f.hidden_field :customer_id, value: @customer_id %>
