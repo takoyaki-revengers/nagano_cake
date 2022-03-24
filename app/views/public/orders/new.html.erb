@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    <h3>注文情報入力</h3>
+    <div class="col-md-3 offset-md-1">
+      <h5 class="bg-light my-5 text-center">注文情報入力</h5>
+    </div>
   </div>
 
   <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
