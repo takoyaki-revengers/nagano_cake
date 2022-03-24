@@ -31,11 +31,12 @@ class Public::OrdersController < ApplicationController
       @address.name = @order.name
       if @address.save
       else
-        flash[:notice] = "新しいお届け先を入力してください"
+        flash.now[:alert] = "新しいお届け先を入力してください。"
+        @order = Order.new(order_params)
         render :new
       end
     else
-      flash[:notice] = "配送先を選択してください"
+      flash.now[:alert] = "配送先を選択してください。"
       render :new
     end
   end
