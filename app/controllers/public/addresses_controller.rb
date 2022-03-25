@@ -1,5 +1,5 @@
 class Public::AddressesController < ApplicationController
-  #before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
   def index
     @address = Address.new
@@ -13,7 +13,7 @@ class Public::AddressesController < ApplicationController
       flash[:notice] = "配送先を登録しました。"
       redirect_to request.referer
     else
-      flash[:notice] = "配送先を入力してください。"
+      flash.now[:alert] = "配送先を入力してください。"
       @customer = current_customer
       @addresses = @customer.addresses
       render 'index'
@@ -31,7 +31,7 @@ class Public::AddressesController < ApplicationController
       flash[:notice] = "配送先を更新しました。"
       redirect_to "/addresses"
     else
-      flash[:notice] = "配送先を入力してください。"
+      flash.now[:alert] = "配送先を入力してください。"
       render "edit"
     end
   end
