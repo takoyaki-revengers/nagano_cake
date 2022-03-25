@@ -1,39 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <h2>商品詳細</h2>
+    <div class="col-md-2 offset-md-2">
+      <h5 class="bg-light my-5 text-center">商品詳細</h4>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-4">
+  <div class="row my-4">
+    <div class="col-md-3 offset-md-2">
       <%= image_tag @item.image,size:"200x200" %>
     </div>
     <div class="col-md-2">
-      <table>
-      <th>商品名</th>
-      <th>商品説明</th>
-      <th>ジャンル</th>
-      <th>税込価格<br>
-      (税抜価格)
-      </th>
-      <th>販売ステータス</th>
+      <label>商品名</label><br>
+      <label>商品説明</label><br>
+      <label>ジャンル</label><br>
+      <label>税込価格<br>(税抜価格)</label><br>
+      <label>販売ステータス</label><br>
     </div>
-
 
     <div class="col-md-5">
-      <% @item.each do |item| %>
-      <td><%= item.name %></td>
-      <td><%= item.introduction %></td>
-      <td><%= item.genres.name %></td>
-      <td><%= item.add_tax_price.to_s(:dalimited) %>
-      (<%= item.praice %>)円
-      </td>
-      <td><%= item.is_active %></td>
-      </table>
+        <p><%= @item.name %></p>
+        <p><%= @item.introduction %></p>
+        <p><%= @item.genre.name %></p>
+        <p><%= @item.add_tax_price.to_s(:dalimited) %>
+        (<%= @item.price %>)円</p>
+        <%if @item.is_active == true %>
+        <p class="font-weight-bold text-success">販売中</p>
+        <% else %>
+        <p class="font-weight-bold text-secondary">販売停止中</p>
+        <% end %>
     </div>
-    
-    <div class="row">
+
+    <div class="row my-3 mx-auto">
     <%= link_to "編集する",edit_admin_item_path, class:"btn btn-success" %>
     </div>
   </div>
+</div>
