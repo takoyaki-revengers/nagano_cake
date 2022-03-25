@@ -1,13 +1,13 @@
 <div class="conteiner">
 
   <div class="row">
-    <div class="col-4 mt-5">
+    <div class="col-4 mt-5 offset-2">
       <h5 class="text-center bg-light"><%= @customer.family_name %><%= @customer.first_name %>さんの情報</h5>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-12 mt-3">
+  <div class="row offset-3">
+    <div class="col-11 mt-3">
       <%= form_with model: @customer, url: admin_customer_path, local: true do |f| %>
        <form>
          <div class="form-group col-xs-9">
@@ -48,7 +48,7 @@
            <%= f.label :会員ステータス, '退会', value: true %>
          </div>
          <div class="form-group">
-           <%= f.submit "変更を保存", class: "btn btn-success offset-2" %>
+           <%= f.submit "変更を保存", class: "btn btn-success offset-3" %>
          </div>
        </form>
       <% end %>
