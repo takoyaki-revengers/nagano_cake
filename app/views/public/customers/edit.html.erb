@@ -1,12 +1,10 @@
 <div class="container">
-  <div class="row">
-    <h3>会員情報編集</h3>
-  </div>
+    <div class="col-md-3 offset-md-1">
+      <h5 class="bg-light my-5 text-center">会員情報編集</h5>
+    </div>
 
   <%= form_with model: @customer, url:customer_path, local: true do |f| %>
-
     <form>
-
       <div class="form-group row">
         <%= f.label :氏名, class:"col-sm-3 col-form-label" %>
           <div class="col-md-3">
@@ -60,7 +58,7 @@
           <%= f.submit "変更内容を保存", class:"btn btn-success btn-block btn-sm" %>
         </div>
         <div class="col-md-2 offset-2">
-          <%= link_to "退会する", customers_unsubscribe_path, data: {confirm: "退会しますか？"}, class:"btn btn-danger btn-block btn-sm" %>
+          <%= link_to "退会する", customers_unsubscribe_path,  class:"btn btn-danger btn-block btn-sm" %>
         </div>
       </div>
 

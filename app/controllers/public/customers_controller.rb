@@ -15,7 +15,7 @@ class Public::CustomersController < ApplicationController
       flash[:notice] = "会員情報を更新しました。"
       redirect_to customers_my_page_path(@customer)
     else
-      flash[:notice] = "会員情報を入力してください。"
+      flash.now[:alert] = "会員情報を入力してください。"
       render :edit
     end
   end
