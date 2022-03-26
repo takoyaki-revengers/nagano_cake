@@ -58,7 +58,7 @@
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
-            <th>制作ステータス</th>
+            <th>製作ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -84,17 +84,17 @@
     <div class="col-4">
       <table class="col-7 mt-auto offset-1">
         <tr>
-          <th class="pb-2">商品合計</th>
-          <td><%= @sum.to_s(:delimited) %>円</td>
+          <td>商品合計</td>
+          <td class="text-right"><%= @sum.to_s(:delimited) %>円</td>
         </tr>
         <tr>
-          <th class="pb-2">送料</th>
-          <td><%= @order.shipping_cost.to_s %>円</td>
+          <td>送料</td>
+          <td class="text-right"><%= @order.shipping_cost.to_s %>円</td>
         </tr>
         <tr>
-          <th class="pb-2">請求合計額</th>
+          <th>請求金額合計</th>
           　<% @sum += @order.shipping_cost %>
-          　<td><%= @sum.to_s(:delimited) %>円</td>
+          　<td class="text-right"><strong><%= @sum.to_s(:delimited) %>円</strong></td>
         </tr>
       </table>
     </div>

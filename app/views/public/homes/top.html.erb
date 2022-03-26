@@ -31,7 +31,7 @@
         <% @item.each do |item| %>
         <div class="col-md-3 col-sm-3 mx-auto">
           <%= link_to item_path(item.id) do %>
-            <%= image_tag item.image, size:"140x120",class: "item-image" %><br>
+            <%= image_tag item.image,class: "item-image" %><br>
           <% end %>
           <%= item.name %><br>
           ¥<%= item.price %>-

@@ -1,12 +1,13 @@
-<div class="container mt-4">
-  <div class="row offset-md-1">
-    <h3>マイページ</h3>
-  </div>
-  <div class="row mb-2 mt-3">
-    <div class="col-2">
-      <h3>登録情報</h3>
+<div class="container">
+    <div class="col-md-2 offset-md-1">
+      <h4 class="bg-light my-2 text-center">マイページ</h4>
     </div>
-    <div>
+
+  <div class="row mb-1">
+    <div class="col-1 d-flex align-items-center" style="height:50px;">
+      <h6><strong>登録情報</strong></h6>
+    </div>
+    <div class="col-3">
       <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-success" %>
     </div>
   </div>
@@ -16,27 +17,27 @@
       <table class="table table-bordered">
         <tbody>
           <tr>
-            <th>氏名</th>
+            <th class="table-active">氏名</th>
             <td><%= @customer.family_name %>  <%= @customer.first_name %></td>
           </tr>
           <tr>
-            <th>カナ</th>
+            <th class="table-active">カナ</th>
             <td><%= @customer.family_name_kana %> <%= @customer.first_name_kana %></td>
           </tr>
           <tr>
-            <th>郵便番号</th>
+            <th class="table-active">郵便番号</th>
             <td><%= @customer.post_code %></td>
           </tr>
           <tr>
-            <th>住所</th>
+            <th class="table-active">住所</th>
             <td><%= @customer.address %></td>
           </tr>
           <tr>
-            <th>電話番号</th>
+            <th class="table-active">電話番号</th>
             <td><%= @customer.telephone %></td>
           </tr>
           <tr>
-            <th>メールアドレス</th>
+            <th class="table-active">メールアドレス</th>
             <td><%= @customer.email %></td>
           </tr>
         </tbody>
@@ -44,17 +45,18 @@
     </div>
   </div>
 
-  <div class="row mt-4">
+  <div class="row mt-1">
     <div class="col-2">
-      <h3><strong>配送先</strong></h3>
+      <h6><strong>配送先</strong></h6>
     </div>
     <div class="col-2">
       <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
     </div>
   </div>
-  <div class="row">
+
+  <div class="row mt-2">
     <div class="col-2">
-      <h3><strong>注文履歴</strong></h3>
+      <h6><strong>注文履歴</strong></h6>
     </div>
     <div class="col-2">
       <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>

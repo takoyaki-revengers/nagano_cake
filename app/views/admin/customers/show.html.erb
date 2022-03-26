@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-3 mb-5 offset-1">
-      <h5 class="text-center bg-light mt-5"><%= @customer.family_name %> <%= @customer.first_name %>さんの会員詳細</h5>
+      <h5 class="text-center bg-light mt-3"><%= @customer.family_name %> <%= @customer.first_name %>さんの会員詳細</h5>
     </div>
   </div>
 
-    <div class="row">
+    <div class="row mb">
       <div class="col-8 mb-2 mx-auto">
         <table class="table">
           <tr>
@@ -39,7 +39,7 @@
           <tr>
             <th>会員ステータス</th>
             <th>
-              <%if @customer.is_deletd == false %>
+              <% if @customer.is_deletd == false %>
                <p class="text-success">有効会員</p>
               <% else %>
                <p class="text-secondary">退会</p>
@@ -49,10 +49,10 @@
         </table>
       </div>
 
-      <div class="col-12">
+      <div class="col-10 my-5 mx-auto">
         <tr class="text-center">
           <th><%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success offset-4" %></th>
-          <th><%= link_to "注文履歴一覧を見る", admin_order_path, class: "btn btn-primary offset-1" %></th>
+          <th><%= link_to "注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary offset-1" %></th>
         </tr>
       </div>
 
