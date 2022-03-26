@@ -1,10 +1,10 @@
 class Public::CartItemsController < ApplicationController
-  # before_action :autheniticate_customer
   before_action :check_item_amount, only: [:create]
+  before_action :customer_signed_in
 
 
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.total_payment }
   end
 
@@ -63,6 +63,13 @@ class Public::CartItemsController < ApplicationController
     if params[:cart_item][:amount] == ""
       flash[:alert] = "個数選択してください"
       redirect_to request.referer
+    end
+  end
+
+  def customer_signed_in
+    unless customer_signed_in?
+      flash[:notice] = "ご購入はログイン時のみ可能です"
+      redirect_to customer_session_path
     end
   end
 end

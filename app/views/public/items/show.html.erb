@@ -4,14 +4,13 @@
     <%= render "public/items/genre_search", genres: @genres %>
 
     <div class="col-md-3 col-sm-3">
-        <%#= image_tag @item.get_image(200,200) %>
-        <%= image_tag @item.image, size: "200x170", class: "img-fluid" %>
+        <%= image_tag @item.image, class: " item-image-show img-fluid" %>
     </div>
 
     <div class="col-md-6 col-sm-6">
      <h5><strong><%= @item.name %></strong></h5><br>
       <%= @item.introduction %><br>
-        ¥<%= @item.add_tax_price %>-(税込) <p>[¥<%= @item.price %>-]</p>
+        ¥<%= @item.add_tax_price.to_s(:delimited) %>-(税込) <p>[¥<%= @item.price %>-]</p>
 
       <%= form_with model: @cart_item, url: cart_items_path do |f| %>
         <%= f.hidden_field :customer_id, value: @customer_id %>

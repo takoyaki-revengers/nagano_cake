@@ -67,6 +67,32 @@
   color: #FFB6C1;
 }
 
-.nav-item {
-  color: #FFB6C1;
+.field_with_errors {
+  display: contents;
+}
+
+.header-color {
+  background-color:#008080;
+}
+
+.text_color {
+  color:#008080;
+}
+
+.item-image{
+  width: 160px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.item-image-show{
+  width: 200px;
+  height: 170px;
+  object-fit: contain;
+}
+
+.admin-item-image-show{
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
 }
