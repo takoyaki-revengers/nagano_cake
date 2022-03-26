@@ -72,7 +72,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index #注文履歴一覧画面の表示
-    @orders = current_customer.orders.all
+    @orders = current_customer.orders.all.page(params[:page]).per(3)
   end
 
   def show #注文履歴詳細画面の表示
