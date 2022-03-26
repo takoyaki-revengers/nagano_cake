@@ -22,9 +22,9 @@ ja:
       unlock_instructions:
         subject: "ロック解除の手順"
       email_changed:
-         subject:  "電子メールが変更されました"
+        subject:  "電子メールが変更されました"
       password_change:
-         subject:  "パスワードが変更されました"
+        subject:  "パスワードが変更されました"
     omniauth_callbacks:
       failure: "%{kind}からあなたを認証できませんでした。理由は \"%{reason} です。"
       success: "%{kind}アカウントからの認証に成功しました。"
@@ -34,6 +34,14 @@ ja:
       send_paranoid_instructions: "あなたのメールアドレスがデータベースに存在する場合、数分後にあなたのメールアドレスにパスワード回復リンクが送られます。"
       updated: "パスワードが正常に変更されました。これでサインインしました。"
       updated_not_active: "パスワードの変更に成功しました。"
+      registrations:
+      destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
+      signed_up: 'アカウント登録が完了しました。'
+      signed_up_but_inactive: 'ログインするためには、アカウントを有効化してください。'
+      signed_up_but_locked: 'アカウントが凍結されているためログインできません。'
+      signed_up_but_unconfirmed: '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
+      update_needs_confirmation: 'アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。'
+      updated: 'アカウント情報を変更しました。'
     sessions:
       signed_in: "さようなら！あなたのアカウントは正常にキャンセルされました。またのお越しをお待ちしております。"
       signed_out: "ようこそ! あなたは正常にサインアップしました。"
