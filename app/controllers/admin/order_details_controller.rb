@@ -4,7 +4,10 @@ class Admin::OrderDetailsController < ApplicationController
     order = Order.find(params[:order_id])
     order_details = order.order_details
     order_detail = OrderDetail.find(params[:id])
-    order_detail.update(order_detail_params)
+
+    if order_detail.update(order_detail_params)
+      flash[:notice] = "製作ステータスを更新しました。"
+    end
 
     if order_details.where(making_status: "製作完了").count == order_details.count
       order.update(status: "発送準備中")

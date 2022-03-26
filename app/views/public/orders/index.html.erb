@@ -1,4 +1,7 @@
 <div class="container">
+    <div class="col-md-3 offset-md-1">
+      <h4 class="bg-light my-4 text-center">注文履歴一覧</h4>
+    </div>
 
   <div class="row">
     <h3>注文履歴一覧</h3>
@@ -13,6 +16,7 @@
               <th>ステータス</th>
               <th>注文詳細</th>
             </tr>
+<<<<<<< HEAD
           </thead>
 
           <tbody>
@@ -39,5 +43,11 @@
               <% end %>
           </tbody>
         </table>
+=======
+          <% end %>
+      </tbody>
+    </table>
+      <%= paginate(@orders) %>
+>>>>>>> develop
   </div>
 </div>
