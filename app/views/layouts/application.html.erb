@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ながのCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
+
   </head>
 
   <body>
+    <%= render "layouts/header" %>
+      <% if flash[:notice] %><p class="text-success col-md-5 sm-5 offset-md-1 sm-1"><%= notice %></p>
+        <% else %><p class="text-danger col-md-5 sm-5 offset-md-1 sm-1"><%= alert %></p>
+      <% end %>
+
     <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
 </html>

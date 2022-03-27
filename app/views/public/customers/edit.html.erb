@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="col-md-3 offset-md-1">
+      <h4 class="bg-light my-5 text-center">会員情報編集</h4>
+    </div>
+
+  <%= form_with model: @customer, url:customer_path, local: true do |f| %>
+
+      <div class="form-group row">
+        <%= f.label :氏名, class:"col-sm-3 col-form-label" %>
+          <div class="col-md-3">
+           <%= f.text_field :family_name, class:"form-control" %>
+          </div>
+          <div class="col-md-3">
+           <%= f.text_field :first_name, class:"form-control" %>
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :フリガナ, class:"col-sm-3 col-form-label" %>
+         <div class="col-md-3">
+          <%= f.text_field :family_name_kana, class:"form-control" %>
+         </div>
+         <div class="col-md-3">
+          <%= f.text_field :first_name_kana, class:"form-control" %>
+         </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :郵便番号（ハイフンなし）, class:"col-sm-3 col-form-label" %>
+        <div class="col-md-3">
+         <%= f.text_field :post_code, class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :住所, class:"col-sm-3 col-form-label" %>
+        <div class="col-md-6">
+         <%= f.text_field :address, class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :電話番号（ハイフンなし）, class:"col-sm-3 col-form-label" %>
+        <div class="col-md-3">
+         <%= f.text_field :telephone, class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :メールアドレス, class:"col-sm-3 col-form-label" %>
+        <div class="col-md-3">
+         <%= f.email_field :email, class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-3 offset-3">
+          <%= f.submit "変更内容を保存", class:"btn btn-success btn-block btn-sm" %>
+        </div>
+        <div class="col-md-2 offset-2">
+          <%= link_to "退会する", customers_unsubscribe_path,  class:"btn btn-danger btn-block btn-sm" %>
+        </div>
+      </div>
+
+ <% end %>
+</div>
